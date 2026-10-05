@@ -36,8 +36,8 @@ public class SkeletonPanel extends JPanel {
 		// Setup Swing window
 		JFrame frame = new JFrame("Recursive Skeleton - Forward Kinematics");
 		frame.add(this);
-		frame.setSize(600, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(600, 600);	// sizeX and sizeY are the dimensions of the graphic window. It assigns 600 to each of them.
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	// Closes the window.
 		frame.setVisible(true);
 	}
 
@@ -56,14 +56,17 @@ public class SkeletonPanel extends JPanel {
 	}
 
 	private void drawSkeleton(Graphics g, double parentX, double parentY, Node node) {
-		// TODO: Ponga comentarios en este método
-		g.fillOval((int) node.getX() - 4, (int) node.getY() - 4, 8, 8);
-		g.drawLine((int) parentX, (int) parentY, (int) node.getX(), (int) node.getY());
-		if (node.getChildren().size() == 0) {
+		// CÓDIGO GENERAL: se ejecuta siempre, antes de determinar si entro al caso base o al paso recursivo.
+		g.fillOval((int) node.getX() - 4, (int) node.getY() - 4, 8, 8);	// Dibuja un óvalo a partir de las coordenadas del nodo que el método recibe como parámetro.
+		g.drawLine((int) parentX, (int) parentY, (int) node.getX(), (int) node.getY());	// Lo mismo que antes pero para dibujar una línea.
+		
+		// CASO BASE: donde el método para de ejecutarse.
+		if (node.getChildren().size() == 0) {	// El método para de ejecutarse si la lista de hijos está vacía.
 			return;
 		}
-		for (Node child : node.getChildren()) {
-			drawSkeleton(g, node.getX(), node.getY(), child);
+		// PASO RECURSIVO: se ejecuta hasta que se llegue al caso base.
+		for (Node child : node.getChildren()) {	// Recorre la lista de hijos del nodo "node"
+			drawSkeleton(g, node.getX(), node.getY(), child);	// Se llama a sí mismo, haciendo que se ejecute el código general.
 		}
 	}
 }

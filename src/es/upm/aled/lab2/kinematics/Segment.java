@@ -19,6 +19,7 @@ public class Segment {
 		this.angle = angle;
 	}
 	
+	// Getter and setter methods of the class Segment.
 	public double getLength() {
 		return length;
 	}
