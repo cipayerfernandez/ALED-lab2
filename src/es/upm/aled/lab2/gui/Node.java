@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Node {
 	private double x, y;
-	private List<Node> children;
+	private List<Node> children = new ArrayList<Node>();
 
 	/**
 	 * Builds a new Node from its absolute position.

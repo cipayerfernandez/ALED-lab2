@@ -1,5 +1,6 @@
 package es.upm.aled.lab2.kinematics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class Segment {
 	
 	private double length;
 	private double angle;
-	private List<Segment> children;
+	private List<Segment> children = new ArrayList<Segment>();
 	
 	public Segment (double length, double angle) {
 		this.length = length;
@@ -43,5 +44,4 @@ public class Segment {
 			children.add(child);
 		}
 	}
-
 }
